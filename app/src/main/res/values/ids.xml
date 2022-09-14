@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--    自定义 Header 组件里的 id-->
+    <item name="header_title" type="id" />
+    <item name="header_back_icon" type="id" />
+    <item name="header_right_menu_content" type="id" />
+    <item name="header_right_menu_icon" type="id" />
+
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../.gradle/caches/transforms-3/36b587862ffd7aa0dffc766f47fa0e3e/transformed/appcompat-1.3.0/res/drawable/abc_item_background_holo_dark.xml" value="0.21" />
+        <entry key="../../../.gradle/caches/transforms-3/dd6a20820943c3660b2a51dab1668d6a/transformed/bottom-navigation-bar-2.2.0/res/layout/bottom_navigation_bar_container.xml" value="0.18297101449275363" />
+        <entry key="../../../.gradle/caches/transforms-3/dd6a20820943c3660b2a51dab1668d6a/transformed/bottom-navigation-bar-2.2.0/res/layout/fixed_bottom_navigation_item.xml" value="0.18297101449275363" />
+        <entry key="../../../.gradle/caches/transforms-3/dd6a20820943c3660b2a51dab1668d6a/transformed/bottom-navigation-bar-2.2.0/res/layout/shifting_bottom_navigation_item.xml" value="0.18297101449275363" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.149" />
+        <entry key="app/src/main/res/drawable/bg_fresh.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/horizontal_divider.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.167" />
+        <entry key="app/src/main/res/drawable/vector_drawable_back_arrow_dark.xml" value="0.149" />
+        <entry key="app/src/main/res/drawable/vector_drawable_close_x.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_about_us.xml" value="0.1689236499997344" />
+        <entry key="app/src/main/res/layout/activity_common_webview.xml" value="0.23697916666666666" />
+        <entry key="app/src/main/res/layout/activity_knowledge_detail.xml" value="0.2381835032437442" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.23697916666666666" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.21693840579710144" />
+        <entry key="app/src/main/res/layout/activity_mainss.xml" value="0.19927536231884058" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.23229166666666667" />
+        <entry key="app/src/main/res/layout/activity_second.xml" value="0.20833333333333334" />
+        <entry key="app/src/main/res/layout/activity_setting.xml" value="0.19452757588713127" />
+        <entry key="app/src/main/res/layout/activity_third.xml" value="0.2375" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_knowledge_list.xml" value="0.23697916666666666" />
+        <entry key="app/src/main/res/layout/fragment_mine.xml" value="0.23854166666666668" />
+        <entry key="app/src/main/res/layout/fragment_order.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_product_list.xml" value="0.23854166666666668" />
+        <entry key="app/src/main/res/layout/fragment_shopping_cart.xml" value="0.23697916666666666" />
+        <entry key="app/src/main/res/layout/header_layout_back_icon.xml" value="0.23697916666666666" />
+        <entry key="app/src/main/res/layout/header_layout_image.xml" value="0.23697916666666666" />
+        <entry key="app/src/main/res/layout/layout_banner.xml" value="0.18177697189483227" />
+        <entry key="app/src/main/res/layout/layout_empty.xml" value="0.23229166666666667" />
+        <entry key="app/src/main/res/layout/layout_error.xml" value="0.23229166666666667" />
+        <entry key="app/src/main/res/layout/layout_loading.xml" value="0.23229166666666667" />
+        <entry key="app/src/main/res/layout/list_item_category_first.xml" value="0.23697916666666666" />
+        <entry key="app/src/main/res/layout/list_item_category_second.xml" value="0.3550393556722875" />
+        <entry key="app/src/main/res/layout/list_item_collection_article.xml" value="0.39749094645182287" />
+        <entry key="app/src/main/res/layout/list_item_home.xml" value="0.6937911987304687" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

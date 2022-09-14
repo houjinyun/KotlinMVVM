@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="HjyHeader">
+        <!-- 中间标题 -->
+        <attr name="headerTitle" format="reference|string" />
+        <attr name="headerTitleTextSize" format="dimension" />
+        <attr name="headerTitleTextColor" format="reference|color" />
+
+        <!-- 左边返回按钮 -->
+        <attr name="headerShowBackIcon" format="boolean" />
+        <attr name="headerBackIcon" format="reference|color"/>
+
+        <!-- 右侧菜单 -->
+        <attr name="headerRightMenuIcon" format="reference"/>
+
+        <attr name="headerShowDivider" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="ClearableEditText">
+        <attr name="clear_drawable" format="reference"/>
+    </declare-styleable>
+
+</resources>

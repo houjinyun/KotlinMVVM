@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.hjy.template.widget.StatusBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <com.hjy.template.widget.Header
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:headerTitle="体系"
+        app:headerShowBackIcon="false"
+        />
+
+    <com.drake.statelayout.StateLayout
+        android:id="@+id/state_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView_first"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:scrollbars="vertical"
+                    android:overScrollMode="never"
+                    android:background="@color/grey100"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView_second"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="vertical"
+                    android:overScrollMode="never"
+                    />
+            </LinearLayout>
+
+    </com.drake.statelayout.StateLayout>
+
+</LinearLayout>

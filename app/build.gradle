@@ -1,0 +1,105 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.alibaba.arouter'
+    id 'kotlin-kapt'
+}
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.hjy.template"
+        minSdk 23
+        targetSdk 32
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    //lifecycleScope 扩展
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
+    //viewModelScope 扩展
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    //coroutine 引用
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.10'
+
+    //loading dialog
+    implementation 'com.github.maning0303:MNProgressHUD:V2.0.0X'
+
+    //BottomNavigationB底部导航栏
+    implementation 'com.ashokvarma.android:bottom-navigation-bar:2.2.0'
+
+    implementation 'com.tencent:mmkv:1.2.14'
+
+    //ARouter 路由框架
+    implementation 'com.alibaba:arouter-api:1.5.2'
+    kapt 'com.alibaba:arouter-compiler:1.5.2'
+
+    implementation  'io.github.scwang90:refresh-layout-kernel:2.0.5'      //核心必须依赖
+    implementation  'io.github.scwang90:refresh-header-classics:2.0.5'    //经典刷新头
+//    implementation  'io.github.scwang90:refresh-header-radar:2.0.5'       //雷达刷新头
+//    implementation  'io.github.scwang90:refresh-header-falsify:2.0.5'     //虚拟刷新头
+//    implementation  'io.github.scwang90:refresh-header-material:2.0.5'    //谷歌刷新头
+//    implementation  'io.github.scwang90:refresh-header-two-level:2.0.5'   //二级刷新头
+    implementation  'io.github.scwang90:refresh-footer-ball:2.0.5'        //球脉冲加载
+    implementation  'io.github.scwang90:refresh-footer-classics:2.0.5'    //经典加载
+    //通用 adapter
+    implementation 'com.github.liangjingkanji:BRV:1.3.80'
+
+    //图片加载库
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+
+    implementation 'com.github.Justson.AgentWeb:agentweb-core:v5.0.6-androidx' // (必选)
+    implementation 'com.github.Justson.AgentWeb:agentweb-filechooser:v5.0.6-androidx' // (可选)
+    implementation 'com.github.Justson:Downloader:v5.0.4-androidx'
+
+    //谷歌流式布局
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+
+    implementation 'io.github.youth5201314:banner:2.2.2'
+
+}
