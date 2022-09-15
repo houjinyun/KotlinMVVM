@@ -111,43 +111,4 @@ class KnowledgePageListFragment: BaseViewModelFragment<KnowledgePageListViewMode
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        println("HJY: onViewCreated() cid = $cid")
-
-    }
-
-    override fun onStart() {
-        super.onStart()
-        println("HJY: onStart() cid = $cid")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        println("HJY: onResume() cid = $cid")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        println("HJY: onPause() cid = $cid")
-
-    }
-
-    override fun onStop() {
-        super.onStop()
-        println("HJY: onStop() cid = $cid")
-
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        println("HJY: onDestroyView() cid = $cid")
-
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        println("HJY: onDestroy() cid = $cid")
-    }
-
 }

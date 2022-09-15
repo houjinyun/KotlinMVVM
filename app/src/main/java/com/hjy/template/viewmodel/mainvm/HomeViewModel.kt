@@ -35,6 +35,10 @@ class HomeViewModel(app: Application): BaseViewModel(app) {
      * 获取 banner 信息
      */
     fun getBannerList() {
+        if (!SettingUtil.isShowBanner()) {
+            _bannerListFlow.value = Resource(null)
+            return
+        }
         viewModelScope.launch {
             articleRepository.getBannerList()
                 .catch {

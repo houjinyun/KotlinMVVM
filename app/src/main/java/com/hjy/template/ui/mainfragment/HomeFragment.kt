@@ -32,13 +32,14 @@ class HomeFragment: BaseViewModelFragment<HomeViewModel, FragmentHomeBinding>() 
         }
         //粘性事件
         subscribeEventAtLeast<ShowBannerEvent>(Lifecycle.State.RESUMED, true) {
+            mBinding.recyclerView.layoutManager?.scrollToPosition(0)
             if (it.isShow) {
                 //重新刷新一下数据
-                mBinding.recyclerView.layoutManager?.scrollToPosition(0)
                 mBinding.refreshLayout.autoRefresh()
             } else {
                 //隐藏 banner
                 mListAdapter.clearHeader()
+                mBinding.refreshLayout.autoRefresh()
             }
             //粘性事件，收到之后立马清除掉
             clearStickyEvent<ShowBannerEvent>()
@@ -74,6 +75,7 @@ class HomeFragment: BaseViewModelFragment<HomeViewModel, FragmentHomeBinding>() 
 
         mBinding.refreshLayout.setOnRefreshListener {
             //下拉刷新中...
+            mFragmentViewModel.getBannerList()
             mFragmentViewModel.getTopArticlesAndArticleList(true)
         }
         mBinding.refreshLayout.setOnLoadMoreListener {
@@ -86,8 +88,12 @@ class HomeFragment: BaseViewModelFragment<HomeViewModel, FragmentHomeBinding>() 
         //顶部 banner
         launchAtLeast(Lifecycle.State.RESUMED) {
             mFragmentViewModel.bannerListFlow.collect {
-                mListAdapter.clearHeader(false)
-                mListAdapter.addHeader(it.data)
+                if (!it.data.isNullOrEmpty()) {
+                    mListAdapter.clearHeader(false)
+                    mListAdapter.addHeader(it.data)
+                } else {
+                    mListAdapter.clearHeader(false)
+                }
             }
         }
 

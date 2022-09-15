@@ -66,4 +66,12 @@ object SettingUtil {
         mmkv.encode("show_top", isShow)
     }
 
+    fun setAvatarUrl(path: String) {
+        mmkv.encode("avatar", path)
+    }
+
+    fun getAvatar(): String? {
+        return mmkv.decodeString("avatar", null)
+    }
+
 }

@@ -53,6 +53,10 @@ object UserInfoManager {
         userInfo.userId = userId
         userInfoStateFlow.value = Resource(userInfo)
     }
+    fun updateAvatar(path: String?) {
+        userInfo.avatar = path
+        userInfoStateFlow.value = Resource(userInfo)
+    }
 
     /**
      * 监听用户信息的变化
@@ -102,5 +106,6 @@ class UserInfo {
     var gender: Int? = null
     var address: String? = null
     var userId: String? = null
+    var avatar: String? = null
 
 }

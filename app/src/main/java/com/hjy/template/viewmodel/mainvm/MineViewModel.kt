@@ -5,7 +5,9 @@ import androidx.lifecycle.viewModelScope
 import com.hjy.template.base.BaseViewModel
 import com.hjy.template.event.BaseEvent
 import com.hjy.template.event.postEvent
+import com.hjy.template.global.UserInfoManager
 import com.hjy.template.repository.AccountRepository
+import com.hjy.template.utils.SettingUtil
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
@@ -24,6 +26,13 @@ class MineViewModel(app: Application): BaseViewModel(app) {
                     postEvent(BaseEvent.LogoutEvent(""))
                 }.collect {
                 }
+        }
+    }
+
+    fun updateAvatar(path: String) {
+        viewModelScope.launch {
+            SettingUtil.setAvatarUrl(path)
+            UserInfoManager.updateAvatar(path)
         }
     }
 

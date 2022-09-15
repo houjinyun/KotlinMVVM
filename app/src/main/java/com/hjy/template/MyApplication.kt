@@ -43,9 +43,11 @@ class MyApplication: MultiDexApplication() {
         if (isLogin) {
             val token = SettingUtil.getCookie() ?: ""
             val user = SettingUtil.getUserInfo()
+            val avatar = SettingUtil.getAvatar()
             user?.let {
                 UserInfoManager.updateName(it.username)
                 UserInfoManager.updateUserId(it.id.toString())
+                UserInfoManager.updateAvatar(avatar)
             }
             UserInfoManager.setToken(token)
             RetrofitClient.updateToken(token)

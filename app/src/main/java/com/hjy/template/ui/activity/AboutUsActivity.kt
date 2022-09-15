@@ -20,7 +20,7 @@ class AboutUsActivity: BaseViewModelActivity<BaseViewModel, ActivityAboutUsBindi
         mBinding.tvAboutVersion.text = "Version ${packageManager.getPackageInfo(packageName, 0).versionName}"
         mBinding.layoutAboutSourcecode.setOnClickListener {
             ARouter.getInstance().build("/test/webview")
-                .withString("url", "https://www.wanandroid.com/blog/show/2")
+                .withString("url", "https://github.com/houjinyun/KotlinMVVM")
                 .withString("title", "源码")
                 .navigation(this)
         }

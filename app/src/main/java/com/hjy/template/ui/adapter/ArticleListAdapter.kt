@@ -99,14 +99,14 @@ fun buildCommonArticleListAdapter(recyclerView: RecyclerView, fragment: Fragment
                         findView<ImageView>(R.id.iv_like).setImageResource(
                             if (article.collect) R.mipmap.ic_like else R.mipmap.ic_not_like
                         )
-                        onClick(R.id.iv_like) {
-                            onClickListener(R.id.iv_like, getModel())
-                        }
-                        onClick(R.id.item) {
-                            onClickListener(R.id.item, getModel())
-                        }
                     }
                 }
+            }
+            onClick(R.id.iv_like) {
+                onClickListener(R.id.iv_like, getModel())
+            }
+            onClick(R.id.item) {
+                onClickListener(R.id.item, getModel())
             }
         }
 }

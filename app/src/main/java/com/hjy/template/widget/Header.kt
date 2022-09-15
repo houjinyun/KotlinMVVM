@@ -65,6 +65,10 @@ class Header(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
                 200f,
                 context.resources.displayMetrics
             ).toInt()
+            ellipsize = TextUtils.TruncateAt.MARQUEE
+            marqueeRepeatLimit = -1
+            isFocusableInTouchMode = true
+            isFocusable = true
             setOnClickListener(this@Header)
         }
         var titleLayoutParams = LayoutParams(
