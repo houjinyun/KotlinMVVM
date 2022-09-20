@@ -27,8 +27,8 @@ class MyApplication: MultiDexApplication() {
             ClassicsHeader(this).setFinishDuration(0)
         }
         SmartRefreshLayout.setDefaultRefreshFooterCreator { _, _ ->
-//            ClassicsFooter(this).setFinishDuration(0)
-            BallPulseFooter(this)
+            ClassicsFooter(this).setFinishDuration(0)
+//            BallPulseFooter(this)
         }
 
         StateConfig.apply {

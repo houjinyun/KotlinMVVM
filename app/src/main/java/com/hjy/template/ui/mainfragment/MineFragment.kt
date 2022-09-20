@@ -24,6 +24,7 @@ class MineFragment : BaseViewModelFragment<MineViewModel, FragmentMineBinding>()
     override fun getViewBinding(): FragmentMineBinding =
         FragmentMineBinding.inflate(layoutInflater, null, false)
 
+
     override fun init() {
         UserInfoManager.observeAtLeast(viewLifecycleOwner, Lifecycle.State.RESUMED) {
             if (UserInfoManager.isLogin()) {

@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.149" />
         <entry key="app/src/main/res/drawable/bg_bottom_dialog.xml" value="0.194" />
         <entry key="app/src/main/res/drawable/bg_fresh.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_search.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/horizontal_divider.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.167" />
         <entry key="app/src/main/res/drawable/vector_drawable_back_arrow_dark.xml" value="0.149" />
@@ -21,12 +22,14 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21693840579710144" />
         <entry key="app/src/main/res/layout/activity_mainss.xml" value="0.19927536231884058" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.23229166666666667" />
+        <entry key="app/src/main/res/layout/activity_search.xml" value="0.1715210355987055" />
         <entry key="app/src/main/res/layout/activity_second.xml" value="0.20833333333333334" />
         <entry key="app/src/main/res/layout/activity_setting.xml" value="0.19452757588713127" />
         <entry key="app/src/main/res/layout/activity_third.xml" value="0.2375" />
         <entry key="app/src/main/res/layout/dialog_bottom_photo.xml" value="0.18725951261222745" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_knowledge_list.xml" value="0.23697916666666666" />
+        <entry key="app/src/main/res/layout/fragment_knowledge_tree.xml" value="0.19581017528858485" />
         <entry key="app/src/main/res/layout/fragment_mine.xml" value="0.23854166666666668" />
         <entry key="app/src/main/res/layout/fragment_order.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_product_list.xml" value="0.23854166666666668" />

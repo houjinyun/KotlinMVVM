@@ -4,9 +4,13 @@ import android.os.Bundle
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
+import com.alibaba.android.arouter.launcher.ARouter
 import com.hjy.template.event.BaseEvent
+import com.hjy.template.event.postEvent
+import com.hjy.template.event.subscribeEventAtLeast
 import com.hjy.template.utils.toastLong
 import com.hjy.template.utils.toastShort
+import com.lxj.xpopup.XPopup
 import com.maning.mndialoglibrary.MProgressDialog
 import kotlinx.coroutines.CoroutineDispatcher
 
@@ -74,6 +78,24 @@ abstract class BaseViewModelActivity<VM : BaseViewModel, VB : ViewBinding> : Bas
             mActivityViewModel.pageEventBus.subscribeEvent<BaseEvent.ClosePageEvent> {
                 finish()
             }
+        }
+        subscribeEventAtLeast<BaseEvent.TokenInvalidEvent>(Lifecycle.State.RESUMED) {
+            XPopup.Builder(this)
+                .dismissOnTouchOutside(false)
+                .dismissOnBackPressed(false)
+                .asConfirm(
+                    "温馨提示", "您的账号已过期，请重新登录",
+                    "取消", "确定", {
+                        //跳转去登录
+                        postEvent(BaseEvent.LogoutEvent("token过期"))
+                        ARouter.getInstance().build("/test/login").navigation(this)
+                    }, {
+                        //回到首页
+                        postEvent(BaseEvent.LogoutEvent("token过期"))
+                        ARouter.getInstance().build("/test/main").withInt("tabIndex", 0)
+                            .navigation(this)
+                    }, false
+                ).show()
         }
     }
 

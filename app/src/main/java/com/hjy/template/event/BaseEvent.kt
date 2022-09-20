@@ -28,6 +28,11 @@ open class BaseEvent(open val key: String) {
     data class ShowLoadingDialogEvent(val message: CharSequence?, val showOrHide: Boolean) : BaseEvent("loadingDialog")
 
     data class ClosePageEvent(val message: CharSequence?): BaseEvent("closepage")
+
+    /**
+     * token 过期的通知
+     */
+    data class TokenInvalidEvent(val message: String?): BaseEvent("tokeninvalid")
 }
 
 

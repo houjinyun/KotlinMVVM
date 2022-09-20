@@ -5,13 +5,16 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.hjy.template.event.BaseEvent
 import com.hjy.template.event.FlowEventBus
+import com.hjy.template.event.postEvent
 import com.hjy.template.exception.BusinessException
 import com.hjy.template.exception.NetworkConnException
 import com.hjy.template.exception.TokenInvalidException
+import com.hjy.template.repository.AccountRepository
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.flowOn
 
 /**
  * 所有 ViewModel 都必须继承该类或其子类，统一使用包含 Application 参数的 ViewModel
@@ -102,6 +105,33 @@ open class BaseViewModel(app: Application) : AndroidViewModel(app) {
                 toastShort(e.message ?: "")
             }
         }
+    }
+
+    /**
+     * 构造一个 API 请求的 flow
+     *
+     * @param showError 是否自动弹出错误信息，默认为 true，注意不管怎样错误都会继续传递下去，
+     *                  很多时候你还需要在发生错误时处理一些额外的业务逻辑
+     * @param apiRequest
+     */
+    suspend fun <T> launchApiRequestFlow(
+        showError: Boolean = true,
+        apiRequest: suspend () -> Flow<T>
+    ): Flow<T> {
+        return apiRequest()
+            .catch {
+                //如果是 token 过期
+                if (it is TokenInvalidException) {
+                    //清除用户登录信息
+                    AccountRepository().logout()
+                    //发送 token 过期事件
+                    postEvent(BaseEvent.TokenInvalidEvent(null))
+                }
+                if (showError) {
+                    processCommonException(it)
+                }
+                throw it
+            }.flowOn(Dispatchers.IO)
     }
 
 }

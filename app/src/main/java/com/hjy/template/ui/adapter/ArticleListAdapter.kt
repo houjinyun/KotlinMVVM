@@ -1,11 +1,13 @@
 package com.hjy.template.ui.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.text.Html
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +24,11 @@ import com.youth.banner.adapter.BannerAdapter
 import com.youth.banner.indicator.CircleIndicator
 
 fun buildCommonArticleListAdapter(recyclerView: RecyclerView, fragment: Fragment, onClickListener: (id: Int, data: Article) -> Unit): BindingAdapter {
+    return buildCommonArticleListAdapter(recyclerView, null, fragment, onClickListener)
+}
+
+
+fun buildCommonArticleListAdapter(recyclerView: RecyclerView, activity: AppCompatActivity?, fragment: Fragment?, onClickListener: (id: Int, data: Article) -> Unit): BindingAdapter {
     return recyclerView.linear()
         .divider(R.drawable.horizontal_divider)
         .setup {
@@ -34,7 +41,7 @@ fun buildCommonArticleListAdapter(recyclerView: RecyclerView, fragment: Fragment
                 when(it) {
                     R.layout.layout_banner -> {
                         val bannerView = itemView as com.youth.banner.Banner<Banner, ImageAdapter>
-                        bannerView.addBannerLifecycleObserver(fragment)
+                        bannerView.addBannerLifecycleObserver(activity ?: fragment)
                             .setIndicator(CircleIndicator(recyclerView.context))
                             .setAdapter(bannerAdapter)
                             .setIndicatorNormalColorRes(R.color.grey600)
@@ -43,7 +50,7 @@ fun buildCommonArticleListAdapter(recyclerView: RecyclerView, fragment: Fragment
                             ARouter.getInstance().build("/test/webview")
                                 .withString("url", data.url)
                                 .withString("title", data.title)
-                                .navigation(fragment.requireActivity())
+                                .navigation(activity ?: fragment!!.requireActivity())
                         }
                     }
                 }
@@ -86,7 +93,11 @@ fun buildCommonArticleListAdapter(recyclerView: RecyclerView, fragment: Fragment
                             img.visibility = View.VISIBLE
                             layoutParams.bottomToBottom = R.id.iv_article_thumbnail
                             layoutParams.topToBottom = -1
-                            Glide.with(fragment).load(envelopePic).into(img)
+                            if (activity != null) {
+                                Glide.with(activity).load(envelopePic).into(img)
+                            } else {
+                                Glide.with(fragment!!).load(envelopePic).into(img)
+                            }
                         }
                         tvChapter.layoutParams = layoutParams
                         val tvTag = findView<TextView>(R.id.tv_article_tag)

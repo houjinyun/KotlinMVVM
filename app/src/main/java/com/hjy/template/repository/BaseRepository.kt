@@ -4,9 +4,10 @@ import com.hjy.template.bean.ResponseData
 import com.hjy.template.exception.BusinessException
 import com.hjy.template.exception.NetworkConnException
 import com.hjy.template.exception.TokenInvalidException
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import okio.IOException
 
 open class BaseRepository {

@@ -1,10 +1,12 @@
 package com.hjy.template.ui.activity
 
+import android.content.Intent
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager.widget.ViewPager
+import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.ashokvarma.bottomnavigation.BottomNavigationItem
@@ -24,6 +26,10 @@ import com.hjy.template.viewmodel.MainViewModel
 @Route(path = "/test/main")
 class MainActivity : BaseViewModelActivity<MainViewModel, ActivityMainBinding>() {
 
+    @Autowired
+    @JvmField
+    var tabIndex: Int? = 0
+
     private lateinit var mAdapter: MainStateAdapter
     private lateinit var mMineBadge: ShapeBadgeItem
 //    private lateinit var mCartBadge: TextBadgeItem
@@ -34,6 +40,11 @@ class MainActivity : BaseViewModelActivity<MainViewModel, ActivityMainBinding>()
 
     override fun getViewBinding(): ActivityMainBinding {
         return ActivityMainBinding.inflate(layoutInflater)
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        mBinding.bottomNavigationBar.selectTab(tabIndex ?: 0)
     }
 
     override fun init() {
@@ -90,6 +101,7 @@ class MainActivity : BaseViewModelActivity<MainViewModel, ActivityMainBinding>()
                 }
             })
             .initialise()
+        mBinding.bottomNavigationBar.selectTab(tabIndex ?: 0)
         mBinding.viewpagerContent.offscreenPageLimit = 4
         mBinding.viewpagerContent.currentItem = mBinding.bottomNavigationBar.currentSelectedPosition
     }

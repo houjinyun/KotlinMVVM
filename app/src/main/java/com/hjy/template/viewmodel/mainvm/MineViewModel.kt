@@ -8,7 +8,8 @@ import com.hjy.template.event.postEvent
 import com.hjy.template.global.UserInfoManager
 import com.hjy.template.repository.AccountRepository
 import com.hjy.template.utils.SettingUtil
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
 
 class MineViewModel(app: Application): BaseViewModel(app) {
@@ -18,14 +19,15 @@ class MineViewModel(app: Application): BaseViewModel(app) {
     fun logout() {
         viewModelScope.launch {
             showLoading("正在退出，请稍后...")
-            accountRepository.logout()
-                .catch {
-                }.onCompletion {
-                    hideLoading()
-                    accountRepository.clearUserInfo()
-                    postEvent(BaseEvent.LogoutEvent(""))
-                }.collect {
-                }
+            launchApiRequestFlow(false) {
+                accountRepository.logout()
+            }.catch {
+            }.onCompletion {
+                hideLoading()
+                accountRepository.clearUserInfo()
+                postEvent(BaseEvent.LogoutEvent(""))
+            }.collect {
+            }
         }
     }
 

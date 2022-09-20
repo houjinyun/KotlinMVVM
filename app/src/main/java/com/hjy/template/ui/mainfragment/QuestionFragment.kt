@@ -1,5 +1,6 @@
 package com.hjy.template.ui.mainfragment
 
+import android.os.Bundle
 import androidx.lifecycle.Lifecycle
 import com.alibaba.android.arouter.launcher.ARouter
 import com.drake.brv.BindingAdapter

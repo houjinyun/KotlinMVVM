@@ -13,6 +13,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -46,6 +48,7 @@
         <activity android:name=".ui.activity.KnowledgePageActivity" />
         <activity android:name=".ui.activity.AboutUsActivity" />
         <activity android:name=".ui.activity.SettingActivity" />
+        <activity android:name=".ui.activity.SearchActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

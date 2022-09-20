@@ -12,6 +12,7 @@ import com.hjy.template.global.UserInfoManager
 import com.hjy.template.ui.adapter.buildCommonArticleListAdapter
 import com.hjy.template.viewmodel.mainvm.HomeViewModel
 
+
 class HomeFragment: BaseViewModelFragment<HomeViewModel, FragmentHomeBinding>() {
 
     private lateinit var mListAdapter: BindingAdapter
@@ -21,6 +22,11 @@ class HomeFragment: BaseViewModelFragment<HomeViewModel, FragmentHomeBinding>() 
     override fun getViewBinding(): FragmentHomeBinding = FragmentHomeBinding.inflate(layoutInflater, null, false)
 
     override fun init() {
+        mBinding.header.setRightMenuIcon(R.mipmap.ic_search)
+        mBinding.header.setRightMenuClickListener {
+            ARouter.getInstance().build("/test/search").navigation(requireActivity())
+        }
+
         initArticleList()
 
         subscribeEventAtLeast<BaseEvent.LoginEvent> {

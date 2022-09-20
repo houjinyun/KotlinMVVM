@@ -1,11 +1,11 @@
 package com.hjy.template.base
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -34,6 +34,12 @@ abstract class BaseActivity : AppCompatActivity() {
             changeStatusBarFontColor(true)
         }
         initContentView()
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        ARouter.getInstance().inject(this)
     }
 
     /**

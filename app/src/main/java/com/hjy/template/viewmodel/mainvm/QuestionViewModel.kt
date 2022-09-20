@@ -32,7 +32,9 @@ class QuestionViewModel(app: Application): BaseViewModel(app) {
 
     fun getQuestionList(isRefresh: Boolean) {
         viewModelScope.launch {
-            articleRepository.getQuestionList(if (isRefresh) 0 else nextPageNum).catch {
+            launchApiRequestFlow(false) {
+                articleRepository.getQuestionList(if (isRefresh) 0 else nextPageNum)
+            }.catch {
                 if (isRefresh) {
                     postInternalPageEvent(PullDownRefreshEvent(false))
                 } else {
@@ -76,9 +78,9 @@ class QuestionViewModel(app: Application): BaseViewModel(app) {
         }
         viewModelScope.launch {
             showLoading("数据加载中，请稍后...")
-            var flow = if (data.collect) articleRepository.cancelCollectArticle(data.id) else articleRepository.addCollectArticle(data.id)
-            flow.catch {
-                processCommonException(it)
+            launchApiRequestFlow {
+                if (data.collect) articleRepository.cancelCollectArticle(data.id) else articleRepository.addCollectArticle(data.id)
+            }.catch {
             }.onCompletion {
                 hideLoading()
             }.collect {

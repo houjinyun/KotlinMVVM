@@ -40,12 +40,12 @@ class HomeViewModel(app: Application): BaseViewModel(app) {
             return
         }
         viewModelScope.launch {
-            articleRepository.getBannerList()
-                .catch {
-                    processCommonException(it)
-                }.collect {
-                    _bannerListFlow.value = Resource(it)
-                }
+            launchApiRequestFlow {
+                articleRepository.getBannerList()
+            }.catch {
+            }.collect {
+                _bannerListFlow.value = Resource(it)
+            }
         }
     }
 
@@ -57,13 +57,15 @@ class HomeViewModel(app: Application): BaseViewModel(app) {
     fun getTopArticlesAndArticleList(isRefresh: Boolean) {
         if (isRefresh) {
             viewModelScope.launch {
-                val isShowTopArticle = SettingUtil.isShowTopArticle()
-                var topArticleFlow = if (isShowTopArticle)
-                    articleRepository.getTopArticles() else flow { emit(mutableListOf()) }
-                var articleListFlow = articleRepository.getArticleList(0)
-                topArticleFlow.zip(articleListFlow) { l1, l2 ->
-                    l1.addAll(l2.datas)
-                    l1
+                launchApiRequestFlow(false) {
+                    val isShowTopArticle = SettingUtil.isShowTopArticle()
+                    var topArticleFlow = if (isShowTopArticle)
+                        articleRepository.getTopArticles() else flow { emit(mutableListOf()) }
+                    var articleListFlow = articleRepository.getArticleList(0)
+                    topArticleFlow.zip(articleListFlow) { l1, l2 ->
+                        l1.addAll(l2.datas)
+                        l1
+                    }
                 }.catch {
                     postInternalPageEvent(PullDownRefreshEvent(false))
                     if (totalArticleList.isEmpty()) {
@@ -88,8 +90,9 @@ class HomeViewModel(app: Application): BaseViewModel(app) {
             }
         } else {
             viewModelScope.launch {
-                articleRepository.getArticleList(nextPageNum).catch {
-                    processCommonException(it)
+                launchApiRequestFlow {
+                    articleRepository.getArticleList(nextPageNum)
+                }.catch {
                     postInternalPageEvent(LoadMoreRefreshEvent(false))
                 }.collect {
                     totalArticleList.addAll(it.datas)
@@ -108,9 +111,9 @@ class HomeViewModel(app: Application): BaseViewModel(app) {
         }
         viewModelScope.launch {
             showLoading("数据加载中，请稍后...")
-            var flow = if (data.collect) articleRepository.cancelCollectArticle(data.id) else articleRepository.addCollectArticle(data.id)
-            flow.catch {
-                processCommonException(it)
+            launchApiRequestFlow {
+                if (data.collect) articleRepository.cancelCollectArticle(data.id) else articleRepository.addCollectArticle(data.id)
+            }.catch {
             }.onCompletion {
                 hideLoading()
             }.collect {
