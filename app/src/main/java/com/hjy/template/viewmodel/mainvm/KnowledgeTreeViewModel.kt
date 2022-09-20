@@ -42,7 +42,7 @@ class KnowledgeTreeViewModel(app: Application) : BaseViewModel(app) {
                         return@collect
                     }
                     if (it.isNullOrEmpty()) {
-                        _loadingStateFlow.value = Resource(Constants.STATE_EMPTY)
+//                        _loadingStateFlow.value = Resource(Constants.STATE_EMPTY)
                     } else {
                         _loadingStateFlow.value = Resource(Constants.STATE_LOAD_SUCCESS)
                         cacheLoaded = true
