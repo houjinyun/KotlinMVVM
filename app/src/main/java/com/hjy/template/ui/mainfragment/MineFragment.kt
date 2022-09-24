@@ -85,7 +85,7 @@ class MineFragment : BaseViewModelFragment<MineViewModel, FragmentMineBinding>()
 
     private fun requestPermission() {
         PermissionX.init(this)
-            .permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .permissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
             .onExplainRequestReason { scope, deniedList ->
                 scope.showRequestReasonDialog(deniedList, "设置头像需要这些权限", "确定", "取消")
             }

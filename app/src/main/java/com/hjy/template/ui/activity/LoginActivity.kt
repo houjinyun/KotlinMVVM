@@ -28,6 +28,8 @@ class LoginActivity: BaseViewModelActivity<AccountViewModel, ActivityLoginBindin
             ARouter.getInstance().build("/test/register").navigation(this)
         }
 
+        mBinding.etPhone.requestFocus()
+
         subscribeEvent<BaseEvent.LoginEvent> {
             finish()
         }

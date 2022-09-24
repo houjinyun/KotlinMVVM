@@ -53,7 +53,7 @@ class SearchViewModel(app: Application): BaseViewModel(app) {
             }.catch {
                 it.printStackTrace()
             }.map {
-                _hotSearchFlow.value = Resource(it)
+//                _hotSearchFlow.value = Resource(it)
                 dbRepository.deleteAllHotSearchData()
                 dbRepository.insertHotSearch(it)
             }.flowOn(Dispatchers.IO).catch { }.collect {}

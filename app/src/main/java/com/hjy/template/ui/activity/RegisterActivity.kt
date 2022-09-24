@@ -24,6 +24,8 @@ class RegisterActivity: BaseViewModelActivity<AccountViewModel, ActivityRegister
             mActivityViewModel.doRegister(name, pwd, pwdRepeat)
         }
 
+        mBinding.etPhone.requestFocus()
+
         subscribeEvent<BaseEvent.LoginEvent> {
             finish()
         }

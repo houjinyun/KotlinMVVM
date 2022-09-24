@@ -44,7 +44,8 @@ class MainActivity : BaseViewModelActivity<MainViewModel, ActivityMainBinding>()
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        mBinding.bottomNavigationBar.selectTab(tabIndex ?: 0)
+        if (intent?.getIntExtra("tabIndex", -1) != -1)
+            mBinding.bottomNavigationBar.selectTab(tabIndex ?: 0)
     }
 
     override fun init() {
