@@ -32,10 +32,11 @@
                 android:padding="20dp"
                 android:id="@+id/layout_avatar"
                 >
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/iv_avatar"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
+                    android:scaleType="centerCrop"
                     android:src="@mipmap/icon_profile"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
